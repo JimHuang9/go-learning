@@ -51,6 +51,19 @@ func InserTeacher(name string, age int) int64 {
 	return rowId
 }
 
+func UpdateTeacher(name string, age int, id int64) {
+	rs, err := db.Exec("UPDATE  `School`.`Teacher` SET `NAME`=? ,`Age`=? WHERE `Id`=? ", name, age, id)
+	if err != nil {
+		log.Println(err)
+	}
+	rowCount, err := rs.RowsAffected()
+	if err != nil {
+		log.Println(err)
+	}
+	fmt.Printf("更新 %d 筆資料", rowCount)
+
+}
+
 var db *sql.DB
 
 // 與DB連線。 init() 初始化，時間點比 main() 更早。

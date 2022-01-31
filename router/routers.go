@@ -8,6 +8,7 @@ import (
 
 func NewRouter() *gin.Engine {
 	r := gin.Default()
-	r.GET("/api/teacher", controller.GetUserName)
+	r.GET("/api/teacher", controller.GetTeacher)
+	r.POST("/api/teacher", controller.CreateTeacher)
 	return r
 }

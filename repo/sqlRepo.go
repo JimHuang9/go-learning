@@ -37,7 +37,7 @@ func GetTeachers() []Teacher {
 	return techers
 }
 
-func InserTeacher(name string, age int) {
+func InserTeacher(name string, age int) int64 {
 	rs, err := db.Exec("INSERT INTO `School`.`Teacher` (`Name`,`Age`) VALUES (?,?)", name, age)
 	if err != nil {
 		log.Println(err)
@@ -48,6 +48,7 @@ func InserTeacher(name string, age int) {
 		log.Println(err)
 	}
 	fmt.Printf("新增 %d 筆資料，id = %d \n", rowCount, rowId)
+	return rowId
 }
 
 var db *sql.DB

@@ -4,7 +4,12 @@ import (
 	"go-smaole/repo"
 )
 
-func Get() []repo.Teacher {
+func GetTeacher() []repo.Teacher {
 	teachers := repo.GetTeachers()
 	return teachers
+}
+
+func CreateTeacher(name string, age int) int64 {
+	id := repo.InserTeacher(name, age)
+	return id
 }

@@ -61,7 +61,18 @@ func UpdateTeacher(name string, age int, id int64) {
 		log.Println(err)
 	}
 	fmt.Printf("更新 %d 筆資料", rowCount)
+}
 
+func DeleteTeacher(id int64) {
+	rs, err := db.Exec("Delete FROM  `School`.`Teacher` WHERE `Id`=? ", id)
+	if err != nil {
+		log.Println(err)
+	}
+	rowCount, err := rs.RowsAffected()
+	if err != nil {
+		log.Println(err)
+	}
+	fmt.Printf("刪除 %d 筆資料", rowCount)
 }
 
 var db *sql.DB

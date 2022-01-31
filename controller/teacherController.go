@@ -54,6 +54,18 @@ func UpdateTeacher(c *gin.Context) {
 	c.BindJSON(&json)
 
 	fmt.Println(json)
-	services.UpdateTeacher(json.Name, json.Age, int64(id))
+	services.UpdateTeacher(json.Name, json.Age, id)
+	c.JSON(http.StatusOK, result)
+}
+
+func DeleteTeacher(c *gin.Context) {
+	var result = Result{}
+	result.Status = "0000"
+	result.Message = "OK"
+	id, err := strconv.ParseInt(c.Param("id"), 10, 64)
+	if err == nil {
+		fmt.Println(id, err)
+	}
+	services.DeleteTeacher(id)
 	c.JSON(http.StatusOK, result)
 }

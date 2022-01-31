@@ -11,6 +11,7 @@ func NewRouter() *gin.Engine {
 	r.GET("/api/teacher", controller.GetTeacher)
 	r.POST("/api/teacher", controller.CreateTeacher)
 	r.PUT("/api/teacher/:id", controller.UpdateTeacher)
+	r.DELETE("/api/teacher/:id", controller.DeleteTeacher)
 
 	return r
 }
